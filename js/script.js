@@ -3,16 +3,20 @@ let paper = document.querySelector("img.paper");
 let scissors = document.querySelector("img.scissors");
 let computerImg = document.querySelector("img.computer-img");
 let playerImg = document.querySelector("img.player-img");
+let result = document.querySelector("p.result");
+let resultNumbers = document.querySelector("p.result-numbers");
 let computerChoice = '';
-let playerChoice= '';
+let playerChoice = '';
+let playerWonGames = 0;
+let computerWonGames = 0;
 
 //Player choice
 rock.addEventListener("click", function() {
     playerChoice = 'rock';
     rock.style.transform = "scale(1.1)";
-    paper.style.opacity = "0.5";
+    paper.style.opacity = "0.3";
     paper.style.pointerEvents = "none";
-    scissors.style.opacity = "0.5";
+    scissors.style.opacity = "0.3";
     scissors.style.pointerEvents = "none";
     playerImg.src='../images/rock.png';
     computer();
@@ -22,9 +26,9 @@ rock.addEventListener("click", function() {
 paper.addEventListener("click", function() {
     playerChoice = 'paper';
     paper.style.transform = "scale(1.1)";
-    rock.style.opacity = "0.5";
+    rock.style.opacity = "0.3";
     rock.style.pointerEvents = "none";
-    scissors.style.opacity = "0.5";
+    scissors.style.opacity = "0.3";
     scissors.style.pointerEvents = "none";
     playerImg.src='../images/paper.png';
     computer();
@@ -34,9 +38,9 @@ paper.addEventListener("click", function() {
 scissors.addEventListener("click", function() {
     playerChoice = 'scissors';
     scissors.style.transform = "scale(1.1)";
-    paper.style.opacity = "0.5";
+    paper.style.opacity = "0.3";
     paper.style.pointerEvents = "none";
-    rock.style.opacity = "0.5";
+    rock.style.opacity = "0.3";
     rock.style.pointerEvents = "none";
     playerImg.src='../images/scissors.png';
     computer();
@@ -62,15 +66,23 @@ function computer() {
 //Result check
 function checkResult() {
     if(playerChoice == computerChoice) {
-        console.log('REmis');
+        result.innerHTML = "Remis!"
     } else if(playerChoice == 'rock' && computerChoice == 'scissors') {
-        console.log('You Won');
+        result.innerHTML = "You won!"
+        playerWonGames += 1;
+        resultNumbers.innerHTML = `${playerWonGames} : ${computerWonGames}`;
     } else if (playerChoice == 'scissors' && computerChoice == 'paper'){
-        console.log('You Won');
+        result.innerHTML = "You won!"
+        playerWonGames += 1;
+        resultNumbers.innerHTML = `${playerWonGames} : ${computerWonGames}`;
     } else if (playerChoice == 'paper' && computerChoice == 'rock') {
-        console.log('You won')
+        result.innerHTML = "You won!"
+        playerWonGames += 1;
+        resultNumbers.innerHTML = `${playerWonGames} : ${computerWonGames}`;
     } else {
-        console.log('Yuo lost')
+        result.innerHTML = "You lost!"
+        computerWonGames += 1;
+        resultNumbers.innerHTML = `${playerWonGames} : ${computerWonGames}`;
     }
 }
 
