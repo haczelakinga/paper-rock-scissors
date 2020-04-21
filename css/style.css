@@ -2,10 +2,12 @@ body {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  background-color: #e7e7e7;
+  font-family: 'Comic Neue', cursive;
 }
 
 .container {
-  max-width: 1000px;
+  max-width: 1200px;
   padding: 20px;
   margin: 20px auto;
   display: -ms-flexbox;
@@ -24,38 +26,30 @@ body {
 }
 
 .result-wrapper {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-direction: column;
+      flex-direction: column;
+  -ms-flex-pack: center;
+      justify-content: center;
+  -ms-flex-align: center;
+      align-items: center;
   text-align: center;
   -ms-flex-item-align: center;
-      -ms-grid-row-align: center;
       align-self: center;
   font-size: 40px;
 }
 
-.player-choice-img-wrapper {
+.choice-img-wrapper {
   margin-bottom: 40px;
   height: 200px;
-  border: 3px solid #929292;
+  width: 220px;
+  border: 3px solid #b9b9c3;
   padding: 20px;
+  text-align: center;
 }
 
-.player-choice-img-wrapper img {
-  height: 100%;
-}
-
-.computer-choice {
-  -ms-flex-item-align: center;
-      -ms-grid-row-align: center;
-      align-self: center;
-}
-
-.computer-choice-img-wrapper {
-  margin-bottom: 40px;
-  height: 200px;
-  border: 3px solid #929292;
-  padding: 20px;
-}
-
-.computer-choice-img-wrapper img {
+.choice-img-wrapper img {
   height: 100%;
 }
 
@@ -72,5 +66,17 @@ body {
 
 .img-wrapper img:hover {
   transform: scale(1.1);
+}
+
+.clear-btn {
+  font-family: 'Comic Neue', cursive;
+  width: 130px;
+  font-size: 30px;
+  padding: 8px;
+  background: linear-gradient(#e6e6ec, #acaba4);
+  border: 1px solid #b9b9c3;
+  border-radius: 3px;
+  cursor: pointer;
+  display: none;
 }
 /*# sourceMappingURL=style.css.map */

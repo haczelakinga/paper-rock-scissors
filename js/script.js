@@ -5,6 +5,7 @@ let computerImg = document.querySelector("img.computer-img");
 let playerImg = document.querySelector("img.player-img");
 let result = document.querySelector("p.result");
 let resultNumbers = document.querySelector("p.result-numbers");
+let clearBtn = document.querySelector("button.clear-btn");
 let computerChoice = '';
 let playerChoice = '';
 let playerWonGames = 0;
@@ -13,38 +14,28 @@ let computerWonGames = 0;
 //Player choice
 rock.addEventListener("click", function() {
     playerChoice = 'rock';
-    rock.style.transform = "scale(1.1)";
-    paper.style.opacity = "0.3";
-    paper.style.pointerEvents = "none";
-    scissors.style.opacity = "0.3";
-    scissors.style.pointerEvents = "none";
     playerImg.src='../images/rock.png';
     computer();
     checkResult();
+    clearBtn.style.display= "block";  
 });
 
 paper.addEventListener("click", function() {
     playerChoice = 'paper';
-    paper.style.transform = "scale(1.1)";
-    rock.style.opacity = "0.3";
-    rock.style.pointerEvents = "none";
-    scissors.style.opacity = "0.3";
-    scissors.style.pointerEvents = "none";
     playerImg.src='../images/paper.png';
+    clearBtn.style.display = "block";
     computer();
     checkResult();
+    clearBtn.style.display= "block";  
 });
 
 scissors.addEventListener("click", function() {
     playerChoice = 'scissors';
-    scissors.style.transform = "scale(1.1)";
-    paper.style.opacity = "0.3";
-    paper.style.pointerEvents = "none";
-    rock.style.opacity = "0.3";
-    rock.style.pointerEvents = "none";
     playerImg.src='../images/scissors.png';
+    clearBtn.style.display = "block";
     computer();
     checkResult();
+    clearBtn.style.display= "block";  
 });
 
 
@@ -66,7 +57,7 @@ function computer() {
 //Result check
 function checkResult() {
     if(playerChoice == computerChoice) {
-        result.innerHTML = "Remis!"
+        result.innerHTML = "Draw!"
     } else if(playerChoice == 'rock' && computerChoice == 'scissors') {
         result.innerHTML = "You won!"
         playerWonGames += 1;
@@ -85,4 +76,15 @@ function checkResult() {
         resultNumbers.innerHTML = `${playerWonGames} : ${computerWonGames}`;
     }
 }
+
+//Clear game
+clearBtn.addEventListener("click", function() {
+    playerWonGames = 0;
+    computerWonGames = 0;
+    resultNumbers.innerHTML = `${playerWonGames} : ${computerWonGames}`;
+    result.innerHTML = "Let's start the game!<br>Choose your move!";
+    playerImg.src = '../images/question-mark.png';
+    computerImg.src = '../images/question-mark.png';
+    clearBtn.style.display = "none";
+});
 
