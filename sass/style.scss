@@ -31,6 +31,7 @@ body {
     text-align: center;
     align-self: center;
     font-size: 40px;
+    flex-wrap: wrap;
 }
 
 .choice-img-wrapper {
@@ -71,4 +72,33 @@ body {
     border-radius: 3px;
     cursor: pointer;
     display: none;
+}
+
+
+@media (max-width: 1024px) {
+    .container {
+        width: auto;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .result-wrapper {
+        order: 3;
+        flex: 0 0 100%;
+    }
+    
+    .choice-img-wrapper {
+        margin: 10px;
+    }
+
+    .player-options {
+        margin-top: 0;
+    }
+    .img-wrapper {
+        padding: 0 10px;
+    }
+}
+
+@media (max-width: 768px) {
+
 }
