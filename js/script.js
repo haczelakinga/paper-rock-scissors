@@ -61,22 +61,38 @@ function computerMove() {
 
 //Result check
 function checkResult() {
+    const positiveText= [`You're great!`, `Amazing!`, `Wonderful!`, `Keep going!`, `You got it!`, `You won!`];
+
+    const negativeText = [`Lost!`, `Oopss!`, `Try again!`, `Not this time!`];
+
+    function getPositiveText() {
+        const text = positiveText[Math.floor(Math.random() * positiveText.length)];
+        console.log(text);
+        return text;
+    }
+
+    function getNegativeText() {
+        const text = negativeText[Math.floor(Math.random() * negativeText.length)];
+        console.log(text);
+        return text;
+    }
+
     if(playerChoice == computerChoice) {
         result.innerHTML = "Draw!"
     } else if(playerChoice == 'rock' && computerChoice == 'scissors') {
-        result.innerHTML = "You won!"
+        result.innerHTML = getPositiveText();
         playerWonGames += 1;
         resultNumbers.innerHTML = `${playerWonGames} : ${computerWonGames}`;
     } else if (playerChoice == 'scissors' && computerChoice == 'paper'){
-        result.innerHTML = "You won!"
+        result.innerHTML = getPositiveText();
         playerWonGames += 1;
         resultNumbers.innerHTML = `${playerWonGames} : ${computerWonGames}`;
     } else if (playerChoice == 'paper' && computerChoice == 'rock') {
-        result.innerHTML = "You won!"
+        result.innerHTML = getPositiveText();
         playerWonGames += 1;
         resultNumbers.innerHTML = `${playerWonGames} : ${computerWonGames}`;
     } else {
-        result.innerHTML = "You lost!"
+        result.innerHTML = getNegativeText();
         computerWonGames += 1;
         resultNumbers.innerHTML = `${playerWonGames} : ${computerWonGames}`;
     }
