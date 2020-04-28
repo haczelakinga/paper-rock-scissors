@@ -1,8 +1,10 @@
+"use strict";
+
 const rock = document.querySelector("img.rock");
 const paper = document.querySelector("img.paper");
 const scissors = document.querySelector("img.scissors");
-let computerImg = document.querySelector("img.computer-img");
-let playerImg = document.querySelector("img.player-img");
+const computerImg = document.querySelector("img.computer-img");
+const playerImg = document.querySelector("img.player-img");
 const result = document.querySelector("p.result");
 const resultNumbers = document.querySelector("p.result-numbers");
 const clearBtn = document.querySelector("button.clear-btn");
@@ -12,20 +14,20 @@ let playerWonGames = 0;
 let computerWonGames = 0;
 
 //Player choice
-rock.addEventListener("click", function() {
+rock.addEventListener("click", function () {
     buttonClicked("rock")
 });
 
-paper.addEventListener("click", function() {
+paper.addEventListener("click", function () {
     buttonClicked("paper")
 });
 
-scissors.addEventListener("click", function() {
+scissors.addEventListener("click", function () {
     buttonClicked("scissors")
 });
 
 //Clear game
-clearBtn.addEventListener("click", function() {
+clearBtn.addEventListener("click", function () {
     playerWonGames = 0;
     computerWonGames = 0;
     resultNumbers.innerHTML = `${playerWonGames} : ${computerWonGames}`;
@@ -36,10 +38,9 @@ clearBtn.addEventListener("click", function() {
 });
 
 function buttonClicked(btnName) {
-    console.log('clicked');
     playerChoice = btnName;
     playerImg.src = `images/${btnName}.png`;
-    clearBtn.style.display= "block";  
+    clearBtn.style.display = "block";
     computerMove();
     checkResult();
 }
@@ -48,46 +49,34 @@ function buttonClicked(btnName) {
 function computerMove() {
     let randomNumber = Math.floor(Math.random() * 3 + 1);
     if (randomNumber == 1) {
-        computerImg.src='images/paper.png';
         computerChoice = 'paper';
     } else if (randomNumber == 2) {
-        computerImg.src='images/rock.png';
         computerChoice = 'rock'
     } else {
-        computerImg.src='images/scissors.png';
         computerChoice = 'scissors';
     }
+    computerImg.src = `images/${computerChoice}.png`;
 }
 
 //Result check
 function checkResult() {
-    const positiveText= [`You're great!`, `Amazing!`, `Wonderful!`, `Keep going!`, `You got it!`, `You won!`];
+    const positiveText = [`You're great!`, `Amazing!`, `Wonderful!`, `Keep going!`, `You got it!`, `You won!`];
 
     const negativeText = [`Lost!`, `Oopss!`, `Try again!`, `Not this time!`];
 
     function getPositiveText() {
         const text = positiveText[Math.floor(Math.random() * positiveText.length)];
-        console.log(text);
         return text;
     }
 
     function getNegativeText() {
         const text = negativeText[Math.floor(Math.random() * negativeText.length)];
-        console.log(text);
         return text;
     }
 
-    if(playerChoice == computerChoice) {
+    if (playerChoice == computerChoice) {
         result.innerHTML = "Draw!"
-    } else if(playerChoice == 'rock' && computerChoice == 'scissors') {
-        result.innerHTML = getPositiveText();
-        playerWonGames += 1;
-        resultNumbers.innerHTML = `${playerWonGames} : ${computerWonGames}`;
-    } else if (playerChoice == 'scissors' && computerChoice == 'paper'){
-        result.innerHTML = getPositiveText();
-        playerWonGames += 1;
-        resultNumbers.innerHTML = `${playerWonGames} : ${computerWonGames}`;
-    } else if (playerChoice == 'paper' && computerChoice == 'rock') {
+    } else if (playerChoice == 'rock' && computerChoice == 'scissors' || playerChoice == 'scissors' && computerChoice == 'paper' || playerChoice == 'paper' && computerChoice == 'rock') {
         result.innerHTML = getPositiveText();
         playerWonGames += 1;
         resultNumbers.innerHTML = `${playerWonGames} : ${computerWonGames}`;
@@ -97,4 +86,3 @@ function checkResult() {
         resultNumbers.innerHTML = `${playerWonGames} : ${computerWonGames}`;
     }
 }
-

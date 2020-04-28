@@ -10,8 +10,10 @@ body {
   max-width: 1200px;
   padding: 20px;
   margin: 20px auto;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: space-between;
+  -ms-flex-pack: justify;
+      justify-content: space-between;
 }
 
 .choice-label {
@@ -24,14 +26,20 @@ body {
 }
 
 .result-wrapper {
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  -ms-flex-direction: column;
+      flex-direction: column;
+  -ms-flex-pack: center;
+      justify-content: center;
+  -ms-flex-align: center;
+      align-items: center;
   text-align: center;
-  align-self: center;
+  -ms-flex-item-align: center;
+      align-self: center;
   font-size: 40px;
-  flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
 }
 
 .choice-img-wrapper {
@@ -77,12 +85,16 @@ body {
 @media (max-width: 1024px) {
   .container {
     width: auto;
-    flex-wrap: wrap;
-    justify-content: center;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    -ms-flex-pack: center;
+        justify-content: center;
   }
   .result-wrapper {
-    order: 3;
-    flex: 0 0 100%;
+    -ms-flex-order: 3;
+        order: 3;
+    -ms-flex: 0 0 100%;
+        flex: 0 0 100%;
   }
   .choice-img-wrapper {
     margin: 10px;
@@ -94,5 +106,4 @@ body {
     padding: 0 10px;
   }
 }
-
 /*# sourceMappingURL=style.css.map */
