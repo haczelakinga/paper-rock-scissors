@@ -74,9 +74,9 @@ function checkResult() {
         return text;
     }
 
-    if (playerChoice == computerChoice) {
+    if (playerChoice === computerChoice) {
         result.innerHTML = "Draw!"
-    } else if (playerChoice == 'rock' && computerChoice == 'scissors' || playerChoice == 'scissors' && computerChoice == 'paper' || playerChoice == 'paper' && computerChoice == 'rock') {
+    } else if (playerChoice === 'rock' && computerChoice === 'scissors' || playerChoice === 'scissors' && computerChoice === 'paper' || playerChoice === 'paper' && computerChoice === 'rock') {
         result.innerHTML = getPositiveText();
         playerWonGames += 1;
         resultNumbers.innerHTML = `${playerWonGames} : ${computerWonGames}`;
